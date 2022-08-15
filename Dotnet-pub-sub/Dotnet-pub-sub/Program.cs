@@ -8,12 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 //declare event
 
-EventHandlerEngine.Subscribe<SampleEvent, SampleEventHandler>();
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+services.AddScoped<SampleEventHandler>();
+
+EventHandlerEngine.Subscribe<SampleEvent, SampleEventHandler>();
 
 var app = builder.Build();
 
